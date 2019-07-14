@@ -2,7 +2,7 @@
     <div class="login-form-container">
         <div>
             <input 
-                placeholder="Email" 
+                placeholder="Username" 
                 type="text" 
                 v-model="username.value"
                 :class="{'error-field': usernameError}">
@@ -20,39 +20,44 @@
 </template>
 
 <script>
-// import { gqlLogIn } from '../graphql';
+import * as gql from '../graphql';
 
 export default {
     data: () => ({
         username: {
-            value: 'admin',
+            value: '380000000001',
             error: false
         },
         password: {
-            value: 'iwipsqlepaneladmin',
+            value: 'sorbetedelimon',
             error: false
         },
         errors: []
     }),
     components: {},
     methods: {
-        async signin() {
-            // const username = this.username.value;
-            // const password = this.password.value;
+        async login() {
+            const username = this.username.value;
+            const password = this.password.value;
 
+            console.log('Running login ...');
             try {
-                // let userSignedInData = (await this.$apollo.mutate(gqlLogIn(username, password))).data.login;
-                let userSignedInData = {};
+                let userLogedInData = (await this.$apollo.mutate(gql.logIn(username, password))).data.login;
 
-                if (userSignedInData.token) {
-                    localStorage.setItem('iwipSignedInUserToken', userSignedInData.token);
-                    this.$router.push('/dashboard');
+                if (userLogedInData.__typeName !== 'ApiError') {
+                    localStorage.setItem('sqlHospitalLogedInUserToken', userLogedInData.token);
+                    this.$router.push('/appointments');
                 } else {
-                    throw new Error('No valid token received.');
+                    this.$toastr.error(
+                        userLogedInData.description,
+                        userLogedInData.message
+                    );
                 }
             } catch (apiError) {
-                // let processedError = processGraphQLApiErrorMessage(apiError);
-                // this.$toastr.error(processedError[0].description, processedError[0].message);
+                this.$toastr.error(
+                    apiError.description, 
+                    'Login error'
+                );
             }
         }
     },

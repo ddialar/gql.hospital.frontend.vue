@@ -15,9 +15,14 @@ import { fas }             from '@fortawesome/free-solid-svg-icons'
 //     faFolderOpen
 //  } from '@fortawesome/free-regular-svg-icons'
 
-import { routes } from './routes';
+import toastr             from './core/utils/toastr';
+
+import { routes }         from './routes';
+
+import { apolloProvider } from './graphql';
 
 Vue.use(VueRouter);
+Vue.prototype.$toastr = toastr;
 
 library.add(fas);
 // library.add(
@@ -36,5 +41,6 @@ const router = new VueRouter({ routes });
 new Vue({
     el: '#app',
     router,
+    provide: apolloProvider.provide(),
     render: h => h(App),
 });

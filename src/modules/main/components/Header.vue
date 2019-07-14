@@ -9,7 +9,7 @@
                 <p>Panel</p>
             </div>
         </div>
-        <div class="logout-wrapper">
+        <div class="logout-wrapper" @click="logout()">
             <div>Log out</div>
             <div><font-awesome-icon icon="sign-out-alt" /></div>
         </div>
@@ -20,7 +20,13 @@
 export default {
     data: () => ({
         omniaLogoSimple: require("../../../assets/logos/gqlhospital-short-logo.svg")
-    })
+    }),
+    methods: {
+        logout() {
+            localStorage.setItem("sqlHospitalLogedInUserToken", null);
+            this.$router.push("/");
+        }
+    }
 };
 </script>
 
@@ -75,6 +81,7 @@ header {
         align-items: center;
         justify-content: flex-end;
         color: $secondary-font-color;
+        cursor: pointer;
         div:nth-child(2) {
             margin-left: 10px;
         }
