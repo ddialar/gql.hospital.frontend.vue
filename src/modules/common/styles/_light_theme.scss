@@ -1,0 +1,28 @@
+// Colors
+$primary-color: #0087BE;
+$secondary-color: #777777;
+$tertiary-color: #e0e0e0;
+$tertiary-color-soft: #f1f1f1;
+
+$main-background: white;
+$secondary-background: $tertiary-color;
+$header-background: $main-background;
+$menu-background: #272c33;
+$card-background: $menu-background;
+$form-field-background: $menu-background;
+$error-background: #fc4b6c;
+$warning-background: #ffb22b;
+$apply-background: #28a745;
+$cancel-background: $error-background;
+
+$licence-bound-color: $primary-color;
+$licence-active-color: $apply-background;
+$licence-inactive-color: $secondary-color;
+$licence-expired-color: $error-background;
+
+$primary-font-color: $primary-color;
+$secondary-font-color: #272c33;
+$tertiary-font-color: $secondary-color;
+
+$error-color: $error-background;
+$cancel-font-color: $main-background;

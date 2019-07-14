@@ -1,0 +1,62 @@
+<template>
+    <div class="card-contanier">
+        <div class="patient-card-header">
+            <div class="patient-name">Patient name</div>
+            <div class="open-card"><font-awesome-icon icon="chevron-right" /></div>
+        </div>
+        <div class="secondary-data-container">
+            <div class="patient-data-wrapper">
+                <div>XX yo.</div>
+                <div>Social Care Number</div>
+            </div>
+            <div class="appointment-data-wrapper">
+                <div>19/07/19 10:15</div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    props: [
+        'title',
+        'value'
+    ]
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../../common/styles/gql_hospital.scss';
+
+.card-contanier {
+    width: 24%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $tertiary-color;
+    // border: 1px solid $primary-color;
+    .patient-card-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1.4em;
+        color: $secondary-font-color;
+    }
+    .secondary-data-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        align-content: flex-end;
+        color: $tertiary-font-color;
+        .patient-data-wrapper {
+            div:nth-child(1) {
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+</style>
+
+
