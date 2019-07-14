@@ -29,7 +29,7 @@ export default {
 
 header {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 20px;
     z-index: 1;
     box-sizing: border-box;
     display: flex;

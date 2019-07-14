@@ -9,10 +9,19 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-regular-svg-icons": "^5.9.0",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/vue-fontawesome": "^0.1.6",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link": "^1.2.12",
+    "apollo-link-context": "^1.0.18",
+    "apollo-link-http": "^1.5.15",
     "core-js": "^2.6.5",
+    "graphql": "^14.4.2",
+    "graphql-tag": "^2.10.1",
     "vue": "^2.6.10",
+    "vue-apollo": "^3.0.0-rc.1",
     "vue-router": "^3.0.6"
   },
   "devDependencies": {

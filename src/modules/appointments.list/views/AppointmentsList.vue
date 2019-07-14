@@ -1,6 +1,10 @@
 <template>
-    <div class="dashboard-container">
-        <div class="cards-row">
+    <div class="appointments-container">
+        <div class="search-patient">
+            <input type="text" placeholder="Patient name" :model="patientFilter">
+            <font-awesome-icon class="search-icon" icon="search" />
+        </div>
+        <div class="patients-list-wrapper">
             <data-card v-for="i in 4" :key="`card-${i}`" />
         </div>
     </div>
@@ -20,7 +24,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../common/styles/gql_hospital.scss';
 
-.dashboard-container {
+.appointments-container {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -31,17 +35,30 @@ export default {
     display: flex;
     flex-direction: column;
     background-color: $main-background;
-    .cards-row {
+    .search-patient {
+        width: 40%;
+        margin-bottom: 10px;
+        padding: 10px;
+        input:focus {
+            outline: none;
+        }
+        input[type="text"] {
+            width: 85%;
+            margin-right: 10px;
+            font-size: 1em;
+            border: none;
+            border-bottom: 1px solid $tertiary-color;
+        }
+    }
+    .patients-list-wrapper{
         position: relative;
         width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: nowrap;
-    }
-    .dashboard-content {
-        padding: 30px 0;
-        box-sizing: border-box;
     }
 }
 </style>

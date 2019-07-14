@@ -1,4 +1,6 @@
-# GQL Hospital
+![GQL Hospital header](./docs/img/readme/header.png)
+
+
 
 ## Credits
 

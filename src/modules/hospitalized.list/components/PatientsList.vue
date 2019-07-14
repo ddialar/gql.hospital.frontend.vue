@@ -3,7 +3,7 @@
         <ul>
             <li>
                 <input type="text" placeholder="Patient name" :model="patientFilter">
-                <font-awesome-icon class="search-icon" icon="search" />
+                <font-awesome-icon icon="search" />
             </li>
             <li class="patient-data">
                 <font-awesome-icon icon="heartbeat" /> Heartbeat
