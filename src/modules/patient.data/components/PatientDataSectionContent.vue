@@ -1,8 +1,8 @@
 <template>
     <div class="patient-data-section-content">
-        <div class="patient-data-section-content-icon">
+        <!-- <div class="patient-data-section-content-icon">
             <font-awesome-icon icon="chevron-right" />
-        </div>
+        </div> -->
         <div class="patient-data-section-content-values">
             <ul>
                 <li>{{type}}</li>
@@ -27,10 +27,12 @@ export default {
 @import '../../common/styles/gql_hospital.scss';
 
 .patient-data-section-content {
-    display: flex;
-    flex-direction: row;
+    background-color: pink;
+    // display: flex;
+    // flex-direction: row;
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    // height: 10px;
     .patient-data-section-content-icon {
         margin-right: 10px;
     }

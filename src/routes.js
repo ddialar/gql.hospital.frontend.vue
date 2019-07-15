@@ -27,7 +27,7 @@ export const routes = [
                 component: HospitalizedList
             },
             {
-                path: '/patient/:id',
+                path: '/patient/:patientId',
                 component: PatientData,
                 props: true
             }

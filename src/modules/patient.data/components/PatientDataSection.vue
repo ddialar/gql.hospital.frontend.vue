@@ -3,13 +3,13 @@
         <div class="patient-data-section-header">
             <div class="section-title"><span><font-awesome-icon :icon=icon /></span> {{name}}</div>
             <div class="search-field" v-if="data.length > 0">
-                <input type="text" :model="patientFilter">
+                <input type="text" :model="sectionContentFilter">
                 <font-awesome-icon icon="search" />
             </div>
         </div>
         <div class="patient-data-section-content">
-            <div class="patient-data-wrapper" v-if="data.length > 0">
-                <patient-Data-Section-Content 
+            <div class="section-content-wrapper" v-if="data.length > 0">
+                <patient-data-section-content 
                     v-for="content in data" 
                     :type=content.reportType
                     :department=content.department
@@ -28,6 +28,9 @@
 import PatientDataSectionContent from './PatientDataSectionContent.vue';
 
 export default {
+    data: () => ({
+        sectionContentFilter: ''
+    }),
     props: [
         'name',
         'icon',
@@ -43,6 +46,7 @@ export default {
 @import '../../common/styles/gql_hospital.scss';
 
 .patient-data-section-contanier {
+    background-color: cyan;
     width: 32.666%;
     padding: 10px;
     box-sizing: border-box;
@@ -84,38 +88,14 @@ export default {
         align-items: flex-start;
         align-content: flex-start;
         height: 100%;
-        .section-content {
+        .section-content-wrapper {
             display: flex;
             flex-direction: row;
-            // align-items: center;
-            // justify-content: center;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
             width: 100%;
-            height: 100%;
-            // background-color: pink;
-            .section-content-icon {
-                margin-right: 10px;
-            }
-            .section-content-values {
-                width: 100%;
-                ul {
-                    margin: 0;
-                    padding: 0;
-                    // background-color: cyan;
-                }
-                li {
-                    height: auto;
-                    margin-bottom: 2px;
-                    list-style: none;
-                    color: $tertiary-font-color;
-                }
-                li:first-child {
-                    font-size: 1.1em;
-                    color: $secondary-font-color;
-                }
-                li:last-child {
-                    margin-bottom: 10px;
-                }
-            }
+            // height: 100%;
         }
         .no-patient-data {
             display: flex;

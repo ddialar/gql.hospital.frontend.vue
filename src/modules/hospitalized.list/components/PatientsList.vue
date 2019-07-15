@@ -28,7 +28,9 @@
 import PatientItem from '../components/PatientItem.vue';
 
 export default {
-    data: () => ({}),
+    data: () => ({
+        patientFilter: ''
+    }),
     components: {
         patientItem: PatientItem
     }

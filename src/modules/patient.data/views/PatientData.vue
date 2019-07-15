@@ -1,7 +1,10 @@
 <template>
     <div class="patient-data-container">
-        <patient-data-header name="John Wick" age="45" socialCareNumber="380000000012"/>
-        <div class="patient-dashboard-wrapper">
+        <patient-data-header 
+            :name=patientName 
+            :age=patientAge
+            :socialCareNumber=socialCareNumber />
+        <div class="patient-data-wrapper">
             <patient-data-section 
                 v-for="sectionName in Object.keys(sections)" 
                 :name=sections[sectionName].name
@@ -15,9 +18,13 @@
 <script>
 import PatientDataHeader from '../components/PatientDataHeader.vue';
 import PatientDataSection from '../components/PatientDataSection.vue';
+import * as gql from "../graphql";
 
 export default {
     data: () => ({
+        patientName: '',
+        patientAge: '',
+        socialCareNumber: '',
         sections: {
             reports: {
                 name: 'Reports',
@@ -52,9 +59,42 @@ export default {
         }
             
     }),
+    porps: [
+        'patientId'
+    ],
     components: {
         patientDataHeader: PatientDataHeader,
         patientDataSection: PatientDataSection
+    },
+    methods: {
+        processPatientData(patientData) {
+            this.patientName = `${patientData.name} ${patientData.surname}`;
+            this.patientAge = (new Date()).getFullYear() - (new Date(patientData.birthDate)).getFullYear();
+            this.socialCareNumber = patientData.socialCareNumber;
+            this.sections.reports.data = patientData.medicalHistory.medicalReports;
+        }
+    },
+    async beforeMount() {
+        try {
+            let patientData = (await this.$apollo.query(
+                gql.getPatientById(this.$route.params.patientId)
+            )).data.patient;
+            
+            if (patientData.__typeName !== 'ApiError') {
+                this.processPatientData(patientData);
+            } else {
+                this.$toastr.error(
+                    patientData.description,
+                    patientData.message
+                );
+            }
+        } catch (error) {
+            console.error(error.message);
+            this.$toastr.error(
+                error.message,
+                "Getting patient data"
+            );
+        }
     }
 };
 </script>
@@ -86,7 +126,7 @@ export default {
             color: $secondary-font-color;
         }
     }
-    .patient-dashboard-wrapper {
+    .patient-data-wrapper {
         position: relative;
         width: 100%;
         height: 100%;
