@@ -89,7 +89,6 @@ export default {
                 );
             }
         } catch (error) {
-            console.error(error.message);
             this.$toastr.error(
                 error.message,
                 "Getting patient data"

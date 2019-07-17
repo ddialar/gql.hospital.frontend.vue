@@ -41,6 +41,6 @@ const router = new VueRouter({ routes });
 new Vue({
     el: '#app',
     router,
-    provide: apolloProvider.provide(),
+    apolloProvider,
     render: h => h(App),
 });

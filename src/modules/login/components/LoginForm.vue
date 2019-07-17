@@ -40,7 +40,6 @@ export default {
             const username = this.username.value;
             const password = this.password.value;
 
-            console.log('Running login ...');
             try {
                 let userLogedInData = (await this.$apollo.mutate(gql.logIn(username, password))).data.login;
 

@@ -1,14 +1,12 @@
-import Vue               from 'vue';
-import { ApolloClient }  from 'apollo-client';
-import { HttpLink }      from 'apollo-link-http';
-import { setContext }    from 'apollo-link-context';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import VueApollo         from 'vue-apollo';
+import Vue                from 'vue';
+import VueApollo          from 'vue-apollo';
+import { ApolloClient }   from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { setContext }     from 'apollo-link-context';
+import { InMemoryCache }  from 'apollo-cache-inmemory';
 
-const httpLink = new HttpLink({
-  // You should use an absolute URL here
-    // uri: '/graphql'
-    uri: 'http://localhost:4500/graphql'
+const httpLink = new createHttpLink({
+    uri: (process.env.NODE_ENV !== 'development') ? '/graphql' : 'http://localhost:4500/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -20,13 +18,17 @@ const authLink = setContext((_, { headers }) => {
     };
 });
 
+const link = authLink.concat(httpLink);
+
+const cache = new InMemoryCache({
+    addTypename: false
+});
+
 // Create the apollo client
 const apolloClient = new ApolloClient({
-    link: authLink.concat(httpLink),
-    connectToDevTools: true,
-    cache: new InMemoryCache({
-        addTypename: false
-    })
+    link,
+    cache,
+    connectToDevTools: true
 });
 
 // Install the vue plugin
