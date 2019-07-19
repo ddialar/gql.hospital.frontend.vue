@@ -133,13 +133,15 @@ export default {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        div {
-            margin-right: 1%;
-            margin-bottom: 1%;
-        }
-        div:nth-child(3n) {
-            margin-right: 0;
-        }
+        justify-content: space-between;
+        align-content: flex-start;
+        // div {
+        //     margin-right: 1%;
+        //     margin-bottom: 1%;
+        // }
+        // div:nth-child(3n) {
+        //     margin-right: 0;
+        // }
     }
     // .search-patient {
     //     width: 40%;

@@ -58,6 +58,7 @@ export default {
     width: 32.666%;
     height: 100%;
     max-height: 300px;
+    margin-bottom: 1%;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid $tertiary-color;
