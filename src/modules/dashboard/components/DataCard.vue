@@ -17,8 +17,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../common/styles/gql_hospital.scss';
-
 .card-contanier {
     width: 24%;
     height: 100px;

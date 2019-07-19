@@ -18,8 +18,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../common/styles/gql_hospital.scss';
-
 .hospitalized-patients-container {
     position: absolute;
     width: 100%;

@@ -68,8 +68,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../common/styles/gql_hospital.scss';
-
 .login-form-container {
     width: 100%;
     margin-top: 50px;

@@ -58,8 +58,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../common/styles/gql_hospital.scss';
-
 .appointments-container {
     position: absolute;
     width: 100%;
