@@ -1,8 +1,7 @@
 <template>
     <div class="patient-data-section-header">
         <div class="section-title"><span><font-awesome-icon :icon=icon /></span> {{name}}</div>
-        <!-- <div class="search-field" v-if="showSearch"> -->
-        <div class="search-field">
+        <div class="search-field" v-if="showSearch">
             <input 
                 type="text" 
                 :value="value" 
@@ -24,12 +23,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../common/styles/gql_hospital.scss';
-
 .patient-data-section-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex: 1;
     margin-bottom: 20px;
     font-size: 1.4em;
     color: $secondary-font-color;

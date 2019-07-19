@@ -17,8 +17,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../common/styles/gql_hospital.scss';
-
 .patient-data-header {
     margin-bottom: 20px;
     div {
