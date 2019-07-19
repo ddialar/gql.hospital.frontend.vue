@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../common/styles/gql_hospital.scss';
+@import '../../../common/styles/gql_hospital.scss';
 
 .patient-data-section-content {
     background-color: pink;

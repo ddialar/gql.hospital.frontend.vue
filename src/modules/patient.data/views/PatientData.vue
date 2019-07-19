@@ -7,6 +7,7 @@
         <div class="patient-data-wrapper">
             <patient-data-section 
                 v-for="sectionName in Object.keys(sections)" 
+                :patient=patientId
                 :name=sections[sectionName].name
                 :icon=sections[sectionName].icon
                 :data=sections[sectionName].data
@@ -17,11 +18,12 @@
 
 <script>
 import PatientDataHeader from '../components/PatientDataHeader.vue';
-import PatientDataSection from '../components/PatientDataSection.vue';
+import PatientDataSection from '../components/PatientDataSection/PatientDataSection.vue';
 import * as gql from "../graphql";
 
 export default {
     data: () => ({
+        patientId: '',
         patientName: '',
         patientAge: '',
         socialCareNumber: '',
@@ -68,6 +70,7 @@ export default {
     },
     methods: {
         processPatientData(patientData) {
+            this.patientId = patientData.id;
             this.patientName = `${patientData.name} ${patientData.surname}`;
             this.patientAge = (new Date()).getFullYear() - (new Date(patientData.birthDate)).getFullYear();
             this.socialCareNumber = patientData.socialCareNumber;
