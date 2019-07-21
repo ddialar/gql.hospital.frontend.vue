@@ -1,17 +1,13 @@
 <template>
     <header>
-        <div class="logo-wrapper">
-            <div class="logo-container">
-                <img class="omnia-logo" :src="omniaLogoSimple">
-            </div>
-            <div class="moto">
-                <p>Personal</p>
-                <p>Panel</p>
-            </div>
+        <div class="hamburger-menu-container">
+            <font-awesome-icon icon="bars" />
         </div>
-        <div class="logout-wrapper" @click="logout()">
-            <div>Log out</div>
-            <div><font-awesome-icon icon="sign-out-alt" /></div>
+        <div class="header-title">
+            {{this.$route.meta.title}}
+        </div>
+        <div class="logo-container">
+            <img class="gqlhospital-logo" :src="gqlhospitalLogoSimple" />
         </div>
     </header>
 </template>
@@ -19,7 +15,7 @@
 <script>
 export default {
     data: () => ({
-        omniaLogoSimple: require("../../../assets/logos/gqlhospital-short-logo.svg")
+        gqlhospitalLogoSimple: require("../../../assets/logos/gqlhospital-short-logo.svg")
     }),
     methods: {
         logout() {
@@ -35,56 +31,49 @@ export default {
 
 header {
     width: 100%;
-    padding: 0 20px;
     z-index: 1;
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    // border-bottom: 1px solid $tertiary-color;
     background: $header-background;
-    .logo-wrapper {
-        width: 170px;
-        padding: 5px;
-        box-sizing: border-box;
+    padding: 20px;
+    box-sizing: border-box;
+    .hamburger-menu-container {
+        // background-color: cyan;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        .logo-container {
-            width: 46px;
-            height: 50px;
-            padding: 0;
-            .omnia-logo {
-                width: 100%;
-            }
-        }
-        .moto {
-            width: 114px;
-            height: 50px;
-            p {
-                margin: 5px 0 0 0;
-                padding-left: 10px;
-                box-sizing: border-box;
-                font-size: 16px;
-                text-align: left;
-                color: $secondary-font-color;
-            }
-        }
+        flex-direction: column;
+        justify-content: center;
+        width: 44px;
+        font-size: 25px;
+        color: $tertiary-font-color;
     }
-    .logout-wrapper {
-        width: 170px;
-        padding: 5px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        color: $secondary-font-color;
-        cursor: pointer;
-        div:nth-child(2) {
-            margin-left: 10px;
+    .header-title {
+        line-height: 44px;
+        font-size: 1.1em;
+    }
+    .logo-container {
+        // background-color: cyan;
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        padding: 0;
+        .gqlhospital-logo {
+            width: 100%;
         }
     }
 }
+
+/* ************************************************ */
+/* ********      Tablet configuration      ******** */
+/* ************************************************ */
+
+@media screen 
+    and (min-width: $min-tablet-width) {
+    header {
+        .header-title {
+            font-size: 1.3em;
+        }
+    }
+}
+
 </style>

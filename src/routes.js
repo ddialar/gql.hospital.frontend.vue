@@ -20,15 +20,24 @@ export const routes = [
             // },
             {
                 path: '/appointments',
-                component: AppointmentsList
+                component: AppointmentsList,
+                meta: {
+                    title: 'Appointments'
+                }
             },
             {
                 path: '/hospitalized',
-                component: HospitalizedList
+                component: HospitalizedList,
+                meta: {
+                    title: 'Hospitalized'
+                }
             },
             {
                 path: '/patient/:patientId',
                 component: PatientData,
+                meta: {
+                    title: 'Patient'
+                },
                 props: true
             }
         ]
