@@ -1,6 +1,6 @@
 <template>
     <div class="appointments-container">
-        <div class="search-patient">
+        <div class="search-patient" v-if="appointments.length !== 0">
             <input type="text" placeholder="Patient name" :model="appointmentFilter">
             <font-awesome-icon class="search-icon" icon="search" />
         </div>
@@ -64,21 +64,25 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    padding: 25px 10px;
+    padding: 0 10px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     background-color: $main-background;
     .search-patient {
-        width: 40%;
         margin-bottom: 10px;
         padding: 10px;
+        display: flex;
+        flex: row;
+        justify-content: space-between;
         input:focus {
             outline: none;
         }
         input[type="text"] {
-            width: 85%;
+            width: 100%;
             margin-right: 10px;
+            padding: 0 5px;
+            box-sizing: border-box;
             font-size: 1em;
             border: none;
             border-bottom: 1px solid $tertiary-color;
@@ -96,9 +100,8 @@ export default {
             padding: 10px;
             box-sizing: border-box;
             display: flex;
-            flex-direction: row;
             justify-content: flex-start;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
         }
         .no-appointments-data {
             display: flex;
@@ -116,5 +119,62 @@ export default {
         }
     }
 }
+
+/* ************************************************ */
+/* ********      Mobile configuration      ******** */
+/* ************************************************ */
+
+@media screen 
+    and (min-width: $min-mobile-width) {
+    .appointments-container {
+        .appointments-wrapper{
+            .appointments-list{
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+/* ************************************************ */
+/* ********      Tablet configuration      ******** */
+/* ************************************************ */
+
+@media screen 
+    and (min-width: $min-tablet-width) {
+    .appointments-container {
+        .appointments-wrapper{
+            .appointments-list{
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+/* ************************************************ */
+/* ********      Laptop configuration      ******** */
+/* ************************************************ */
+
+@media screen 
+    and (min-width: $min-laptop-width) {
+    .appointments-container {
+        .search-patient {
+            justify-content: flex-start;
+            input[type="text"] {
+                width: 50%;
+            }
+        }
+        .appointments-wrapper{
+            .appointments-list{
+                flex-direction: row;
+                align-content: flex-start;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
 </style>
 

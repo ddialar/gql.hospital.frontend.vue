@@ -35,12 +35,11 @@ export default {
 
 <style lang="scss" scoped>
 .card-contanier {
-    width: 24%;
-    padding: 10px;
-    margin-right: 10px; // This value must be deleted.
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
     border: 1px solid $tertiary-color;
     cursor: pointer;
     .patient-card-header {
@@ -62,6 +61,45 @@ export default {
                 font-size: 1.2em;
             }
         }
+    }
+}
+
+/* ************************************************ */
+/* ********      Mobile configuration      ******** */
+/* ************************************************ */
+
+@media screen 
+    and (min-width: $min-mobile-width) {
+    .card-contanier {
+        width: 100%;
+        
+    }
+}
+
+/* ************************************************ */
+/* ********      Tablet configuration      ******** */
+/* ************************************************ */
+
+@media screen 
+    and (min-width: $min-tablet-width) {
+    .card-contanier {
+        width: 49.5%;
+        margin-bottom: 10px;
+    }
+}
+
+/* ************************************************ */
+/* ********      Laptop configuration      ******** */
+/* ************************************************ */
+
+@media screen 
+    and (min-width: $min-laptop-width) {
+    .card-contanier {
+        width: 24.205%;
+        margin: 0 1% 10px 0;
+    }
+    .card-contanier:nth-child(4n) {
+        margin-right: 0;
     }
 }
 </style>
