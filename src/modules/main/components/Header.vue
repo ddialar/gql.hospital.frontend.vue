@@ -3,6 +3,7 @@
         <div class="hamburger-menu-container">
             <font-awesome-icon icon="bars" />
         </div>
+        <side-menu />
         <div class="header-title">
             {{this.$route.meta.title}}
         </div>
@@ -13,10 +14,14 @@
 </template>
 
 <script>
+import SideMenu from './SideMenu.vue';
 export default {
     data: () => ({
-        gqlhospitalLogoSimple: require("../../../assets/logos/gqlhospital-short-logo.svg")
+        gqlhospitalLogoSimple: require("../../../assets/logos/gqlhospital-icon.svg")
     }),
+    components: {
+        sideMenu: SideMenu
+    },
     methods: {
         logout() {
             localStorage.setItem("sqlHospitalLogedInUserToken", null);
