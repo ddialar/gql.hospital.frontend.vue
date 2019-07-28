@@ -1,5 +1,6 @@
 <template>
     <div id="sidemenu" class="side-menu-container">
+        <div class="side-menu-background"></div>
         <div class="side-menu-content">
             <div class="side-menu-header">
                 <img class="gqlhospital-logo" :src="gqlhospitalLogoLandscape" />
@@ -30,11 +31,8 @@ export default {
     width: 100%;
     box-sizing: border-box;
     z-index: 100;
-    background-color: rgba(0,0,0,.3);
     .side-menu-content {
         position: relative;
-        top: 0;
-        bottom: 0;
         width: 250px;
         height: 100%;
         background-color: $main-background;
@@ -51,13 +49,22 @@ export default {
             color: $primary-color;
         }
         .side-menu-header {
-            margin-bottom: 5px;
             padding: 15px;
             box-sizing: border-box;
             img {
                 width: 100%;
+                padding-bottom: 20px;
+                border-bottom: 1px solid $tertiary-color;
             }
         }
+    }
+    .side-menu-background {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,.3);
     }
 }
 </style>
