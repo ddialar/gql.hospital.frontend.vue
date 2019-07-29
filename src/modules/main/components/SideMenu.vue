@@ -1,17 +1,19 @@
 <template>
-    <div id="sidemenu" class="side-menu-container">
-        <div class="side-menu-background"></div>
-        <div class="side-menu-content">
-            <div class="side-menu-header">
-                <img class="gqlhospital-logo" :src="gqlhospitalLogoLandscape" />
+    <transition name="fade">
+        <div id="sidemenu" class="side-menu-container" v-if="show">
+            <div class="side-menu-background" @click="parentCallback()"></div>
+            <div class="side-menu-content">
+                <div class="side-menu-header">
+                    <img class="gqlhospital-logo" :src="gqlhospitalLogoLandscape" />
+                </div>
+                <ul>
+                    <li>Option 1</li>
+                    <li class="selected">Option 2</li>
+                    <li>Option 3</li>
+                </ul>
             </div>
-            <ul>
-                <li>Option 1</li>
-                <li class="selected">Option 2</li>
-                <li>Option 3</li>
-            </ul>
         </div>
-    </div>
+    </transition>
 </template>
 
 <script>
@@ -19,6 +21,17 @@ export default {
     data: () => ({
         gqlhospitalLogoLandscape: require("../../../assets/logos/gqlhospital-landscape-logo.svg")
     }),
+    props: {
+        'show': { type: Boolean, value: false },
+        'parentCallback': { type: Function }
+    },
+    methods: {
+        hideMenuMethod() {
+            console.log('hidding menu...');
+            
+            this.showMethod();
+        }
+    }
 }
 </script>
 
@@ -66,6 +79,13 @@ export default {
         right: 0;
         background-color: rgba(0,0,0,.3);
     }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
 

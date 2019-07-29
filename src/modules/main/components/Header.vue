@@ -1,9 +1,9 @@
 <template>
     <header>
-        <div class="hamburger-menu-container">
+        <div class="hamburger-menu-container" @click="showMenuMethod()">
             <font-awesome-icon icon="bars" />
         </div>
-        <side-menu />
+        <side-menu :show="showMenu" :parentCallback="showMenuMethod"/>
         <div class="header-title">
             {{this.$route.meta.title}}
         </div>
@@ -17,12 +17,16 @@
 import SideMenu from './SideMenu.vue';
 export default {
     data: () => ({
-        gqlhospitalLogoSimple: require("../../../assets/logos/gqlhospital-icon.svg")
+        gqlhospitalLogoSimple: require("../../../assets/logos/gqlhospital-icon.svg"),
+        showMenu: false
     }),
     components: {
         sideMenu: SideMenu
     },
     methods: {
+        showMenuMethod() {
+            this.showMenu = !this.showMenu;
+        },
         logout() {
             localStorage.setItem("sqlHospitalLogedInUserToken", null);
             this.$router.push("/");
