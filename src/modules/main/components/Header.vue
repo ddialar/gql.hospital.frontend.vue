@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import SideMenu from './SideMenu.vue';
+import SideMenu from './SideMenu/SideMenu.vue';
 export default {
     data: () => ({
         gqlhospitalLogoSimple: require("../../../assets/logos/gqlhospital-icon.svg"),
@@ -25,6 +25,8 @@ export default {
     },
     methods: {
         showMenuMethod() {
+            console.log('showing:', !this.showMenu);
+            
             this.showMenu = !this.showMenu;
         },
         logout() {
