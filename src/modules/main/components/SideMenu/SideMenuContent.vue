@@ -16,7 +16,7 @@
 <script>
 export default {
     data: () => ({
-        gqlhospitalLogoLandscape: require("../../../../assets/logos/gqlhospital-landscape-logo.svg")
+        gqlhospitalLogoLandscape: require("logos/gqlhospital-landscape-logo.svg")
     })
 };
 </script>
@@ -34,6 +34,7 @@ export default {
     li {
         padding: 0 15px;
         line-height: 40px;
+        list-style: none;
     }
     li.selected {
         border-right: 5px solid $primary-color;
