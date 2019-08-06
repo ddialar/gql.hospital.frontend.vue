@@ -1,7 +1,16 @@
 <template>
     <header>
-        <div class="hamburger-menu-container" @click="showMenuMethod()">
+        <div 
+            class="hamburger-menu-container" 
+            @click="showMenuMethod()"
+            v-if="this.$route.meta.title === 'Appointments' || this.$route.meta.title === 'Hospitalized'">
             <font-awesome-icon icon="bars" />
+        </div>
+        <div 
+            class="hamburger-menu-container" 
+            @click="goBack()"
+            v-if="this.$route.meta.title !== 'Appointments' && this.$route.meta.title !== 'Hospitalized'">
+            <font-awesome-icon icon="chevron-left" />
         </div>
         <side-menu :show="showMenu" :parentCallback="showMenuMethod"/>
         <div class="header-title">
@@ -28,6 +37,9 @@ export default {
             console.log('showing:', !this.showMenu);
             
             this.showMenu = !this.showMenu;
+        },
+        goBack() {
+            this.$router.go(-1);
         },
         logout() {
             localStorage.setItem("sqlHospitalLogedInUserToken", null);
