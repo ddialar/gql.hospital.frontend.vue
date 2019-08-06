@@ -15,7 +15,7 @@ import LoginForm from '../components/LoginForm.vue';
 
 export default {
     data: () => ({
-        omniaLogo: require('../../../assets/logos/gqlhospital-full-logo.svg')
+        omniaLogo: require('logos/gqlhospital-full-logo.svg')
     }),
     components: {
         loginForm: LoginForm
