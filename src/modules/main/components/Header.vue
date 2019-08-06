@@ -9,7 +9,7 @@
         <div 
             class="hamburger-menu-container" 
             @click="goBack()"
-            v-if="this.$route.meta.title !== 'Appointments' && this.$route.meta.title !== 'Hospitalized'">
+            v-else>
             <font-awesome-icon icon="chevron-left" />
         </div>
         <side-menu :show="showMenu" :parentCallback="showMenuMethod"/>
@@ -26,7 +26,7 @@
 import SideMenu from './SideMenu/SideMenu.vue';
 export default {
     data: () => ({
-        gqlhospitalLogoSimple: require("../../../assets/logos/gqlhospital-icon.svg"),
+        gqlhospitalLogoSimple: require("logos/gqlhospital-icon.svg"),
         showMenu: false
     }),
     components: {
@@ -34,8 +34,6 @@ export default {
     },
     methods: {
         showMenuMethod() {
-            console.log('showing:', !this.showMenu);
-            
             this.showMenu = !this.showMenu;
         },
         goBack() {
@@ -50,7 +48,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../common/styles/gql_hospital.scss";
 
 header {
     width: 100%;
