@@ -1,18 +1,18 @@
 <template>
     <div class="appointments-container">
         <div class="search-patient" v-if="appointments.length !== 0">
-            <input type="text" placeholder="Patient name" :model="appointmentFilter">
+            <input type="text" placeholder="Patient name" v-model="patientFilter">
             <font-awesome-icon class="search-icon" icon="search" />
         </div>
         <div class="appointments-wrapper">
             <div class="appointments-list" v-if="appointments.length !== 0">
                 <data-card 
-                    v-for="appointment in appointments" 
-                    :patientId=appointment.id
-                    :patientName="getFullName(appointment.name, appointment.surname)"
-                    :patientAge="getAge(appointment.birthDate)"
-                    :socialCareNumber=appointment.socialCareNumber
-                    :key="`patient-${appointment.id}`" />
+                    v-for="patient in patientsList" 
+                    :patientId=patient.id
+                    :patientName="getFullName(patient.name, patient.surname)"
+                    :patientAge="getAge(patient.birthDate)"
+                    :socialCareNumber=patient.socialCareNumber
+                    :key="`patient-${patient.id}`" />
             </div>
             <div class="no-appointments-data" v-if="appointments.length === 0">
                 <div><font-awesome-icon icon="folder-open" /></div>
@@ -29,10 +29,20 @@ import * as gql from "../graphql";
 export default {
     data: () => ({
         appointments: [],
-        appointmentFilter: ''
+        patientFilter: ''
     }),
     components: {
         dataCard: DataCard
+    },
+    computed: {
+        patientsList() {
+            let filter = this.patientFilter.trim().replace(/\s/g, '').toLowerCase();
+            return this.appointments.filter(appointment => {
+                return appointment.name.toLowerCase().indexOf(filter) >= 0 ||
+                       appointment.surname.toLowerCase().indexOf(filter) >= 0 ||
+                       appointment.socialCareNumber.indexOf(filter) >= 0;
+            });
+        }
     },
     methods: {
         getFullName(name, surname) {
