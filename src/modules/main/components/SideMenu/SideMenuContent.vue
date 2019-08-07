@@ -5,9 +5,15 @@
                 <img class="gqlhospital-logo" :src="gqlhospitalLogoLandscape" />
             </div>
             <ul>
-                <li>Option 1</li>
-                <li class="selected">Option 2</li>
-                <li>Option 3</li>
+                <router-link
+                    v-for="(option, index) in options"
+                    :key="'option-' + index"
+                    :to="option.link"
+                    tag="li"
+                    active-class="selected"
+                    exact>
+                    {{ option.text }}
+                </router-link>
             </ul>
         </div>
     </transition>
@@ -16,7 +22,20 @@
 <script>
 export default {
     data: () => ({
-        gqlhospitalLogoLandscape: require("logos/gqlhospital-landscape-logo.svg")
+        gqlhospitalLogoLandscape: require("logos/gqlhospital-landscape-logo.svg"),
+        // REFACTOR: These options must be provided via props and maybe, some of then should be filtered based on the active user's role.
+        options: [
+            {
+                icon: "fa-chart-pie",
+                text: "Appointments",
+                link: '/appointments'
+            },
+            {
+                icon: "fa-chart-pie",
+                text: "New patient",
+                link: '/new_patient'
+            },
+        ]
     })
 };
 </script>

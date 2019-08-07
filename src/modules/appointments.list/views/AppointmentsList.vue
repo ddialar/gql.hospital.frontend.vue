@@ -35,6 +35,7 @@ export default {
         dataCard: DataCard
     },
     computed: {
+        // REFACTOR: This process could be handled by a core service.
         patientsList() {
             let filter = this.patientFilter.trim().replace(/\s/g, '').toLowerCase();
             return this.appointments.filter(appointment => {
