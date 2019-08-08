@@ -3,7 +3,7 @@ import Main from './modules/main/views/Main.vue';
 // import Dashboard from './modules/dashboard/views/Dashboard.vue';
 import AppointmentsList from './modules/appointments.list/views/AppointmentsList.vue';
 import HospitalizedList from './modules/hospitalized.list/views/HospitalizedList.vue';
-import PatientData from './modules/patient.data/views/PatientData.vue';
+import PatientDashboard from './modules/patients/dashboard/views/PatientDashboard.vue';
 
 export const routes = [
     {
@@ -34,7 +34,7 @@ export const routes = [
             },
             {
                 path: '/patient/:patientId',
-                component: PatientData,
+                component: PatientDashboard,
                 meta: {
                     title: 'Patient'
                 },

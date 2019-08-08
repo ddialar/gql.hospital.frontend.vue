@@ -1,5 +1,5 @@
 <template>
-    <div class="patient-data-section-header">
+    <div class="patient-section-header">
         <div class="section-title"><span><font-awesome-icon :icon=icon /></span> {{name}}</div>
         <div class="search-field" v-if="showSearch">
             <input 
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.patient-data-section-header {
+.patient-section-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

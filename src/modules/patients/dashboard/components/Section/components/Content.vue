@@ -1,9 +1,9 @@
 <template>
-    <div class="patient-data-section-content-row">
-        <div class="patient-data-section-content-row-icon">
+    <div class="section-content-row">
+        <div class="section-content-row-icon">
             <font-awesome-icon icon="chevron-right" />
         </div>
-        <div class="patient-data-section-content-row-values">
+        <div class="section-content-row-values">
             <ul>
                 <li>{{type}}</li>
                 <li>{{department}}</li>
@@ -24,16 +24,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.patient-data-section-content-row {
+.section-content-row {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
     margin-bottom: 10px;
-    .patient-data-section-content-row-icon {
+    .section-content-row-icon {
         margin-right: 10px;
     }
-    .patient-data-section-content-row-values {
+    .section-content-row-values {
         width: 100%;
         ul {
             margin: 0;

@@ -1,24 +1,24 @@
 <template>
-    <div class="patient-data-container">
-        <patient-data-header 
+    <div class="patient-dashboard-container">
+        <!-- <dashboard-header 
             :name=patientName 
             :age=patientAge
-            :socialCareNumber=socialCareNumber />
-        <div class="patient-data-wrapper">
-            <patient-data-section 
+            :socialCareNumber=socialCareNumber /> -->
+        <div class="patient-dashboard-wrapper">
+            <dashboard-section 
                 v-for="sectionName in Object.keys(sections)" 
                 :patient=patientId
                 :name=sections[sectionName].name
                 :icon=sections[sectionName].icon
                 :data=sections[sectionName].data
-                :key="`patient-data-${sectionName}`" />
+                :key="`patient-dashboard-${sectionName}`" />
         </div>
     </div>
 </template>
 
 <script>
-import PatientDataHeader from '../components/PatientDataHeader.vue';
-import PatientDataSection from '../components/PatientDataSection/PatientDataSection.vue';
+import Header from '../components/Header.vue';
+import Section from '../components/Section/views/Section.vue';
 import * as gql from "../graphql";
 
 export default {
@@ -65,8 +65,8 @@ export default {
         'patientId'
     ],
     components: {
-        patientDataHeader: PatientDataHeader,
-        patientDataSection: PatientDataSection
+        dashboardHeader: Header,
+        dashboardSection: Section
     },
     methods: {
         processPatientData(patientData) {
@@ -102,13 +102,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.patient-data-container {
+.patient-dashboard-container {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    padding: 25px 20px;
+    padding: 0px 20px 25px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -126,7 +126,7 @@ export default {
             color: $secondary-font-color;
         }
     }
-    .patient-data-wrapper {
+    .patient-dashboard-wrapper {
         position: relative;
         width: 100%;
         height: 100%;

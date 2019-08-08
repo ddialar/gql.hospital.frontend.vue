@@ -1,13 +1,13 @@
 <template>
-    <div class="patient-data-section-contanier">
-        <patient-data-section-header 
+    <div class="section-contanier">
+        <section-header 
             :name=name 
             :icon=icon 
             :showSearch="(data.length > 0) ? true : false"
             v-model="sectionContentFilter" />
-        <div class="patient-data-section-content">
-            <div class="patient-data-section-content-wrapper" v-if="data.length > 0">
-                <patient-data-section-content 
+        <div class="section-content">
+            <div class="section-content-wrapper" v-if="data.length > 0">
+                <section-content 
                     v-for="(content, index) in data" 
                     :type=content.reportType
                     :department=content.department
@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import PatientDataSectionHeader from './PatientDataSectionHeader.vue';
-import PatientDataSectionContent from './PatientDataSectionContent.vue';
+import SectionHeader from '../components/Header.vue';
+import SectionContent from '../components/Content.vue';
 
 export default {
     data: () => ({
@@ -37,24 +37,14 @@ export default {
         'data'
     ],
     components: {
-        patientDataSectionHeader: PatientDataSectionHeader,
-        patientDataSectionContent: PatientDataSectionContent
-    },
-    watch: {
-        // sectionContentFilter(value) {
-        //     // console.log(this.name, '==>', this.sectionContentFilter);
-            
-        // }
-    },
-    mounted() {
-        // console.log(JSON.stringify(this.data));
-        
+        sectionHeader: SectionHeader,
+        sectionContent: SectionContent
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.patient-data-section-contanier {
+.section-contanier {
     width: 32.666%;
     height: 100%;
     max-height: 300px;
@@ -62,17 +52,17 @@ export default {
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid $tertiary-color;
-    .patient-data-section-content {
+    .section-content {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         align-content: flex-start;
-        .patient-data-section-content-wrapper,
+        .section-content-wrapper,
         .no-patient-data {
             width: 100%;
             height: 230px;
         }
-        .patient-data-section-content-wrapper {
+        .section-content-wrapper {
             overflow-y: scroll;
         }
         .no-patient-data {

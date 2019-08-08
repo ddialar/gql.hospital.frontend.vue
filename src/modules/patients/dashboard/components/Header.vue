@@ -1,5 +1,5 @@
 <template>
-    <div class="patient-data-header">
+    <div class="patient-dashboard-header">
         <div>{{name}}</div>
         <div>{{age}} yo.</div>
         <div>{{socialCareNumber}}</div>
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.patient-data-header {
+.patient-dashboard-header {
     margin-bottom: 20px;
     div {
         color: $tertiary-font-color;
