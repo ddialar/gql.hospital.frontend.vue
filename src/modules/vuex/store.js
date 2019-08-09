@@ -5,8 +5,10 @@ import patients from '../patients/vuex';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
     modules: {
         patients
     }
 });
+
+export default store;

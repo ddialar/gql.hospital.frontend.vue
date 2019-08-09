@@ -17,7 +17,9 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue';
+import { mapActions } from 'vuex';
+
+// import Header from '../components/Header.vue';
 import Section from '../components/Section/views/Section.vue';
 import * as gql from "../graphql";
 
@@ -65,16 +67,21 @@ export default {
         'patientId'
     ],
     components: {
-        dashboardHeader: Header,
+        // dashboardHeader: Header,
         dashboardSection: Section
     },
     methods: {
+        ...mapActions([
+            'setSelectedPatient'
+        ]),
         processPatientData(patientData) {
             this.patientId = patientData.id;
             this.patientName = `${patientData.name} ${patientData.surname}`;
             this.patientAge = (new Date()).getFullYear() - (new Date(patientData.birthDate)).getFullYear();
             this.socialCareNumber = patientData.socialCareNumber;
             this.sections.reports.data = patientData.medicalHistory.medicalReports;
+
+            this.$store.dispatch('setSelectedPatient', patientData);
         }
     },
     async beforeMount() {

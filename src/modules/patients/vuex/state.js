@@ -1,3 +1,5 @@
-export const state = {
+const state = {
     selectedPatient: {}
 };
+
+export default state;
