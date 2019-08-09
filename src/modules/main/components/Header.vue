@@ -14,7 +14,7 @@
         </div>
         <side-menu :show="showMenu" :parentCallback="showMenuMethod"/>
         <div class="header-title">
-            {{this.$route.meta.title}}
+            {{headerTitle}}
         </div>
         <div class="logo-container">
             <img class="gqlhospital-logo" :src="gqlhospitalLogoSimple" />
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import SideMenu from './SideMenu/SideMenu.vue';
 export default {
     data: () => ({
@@ -42,6 +44,16 @@ export default {
         logout() {
             localStorage.setItem("sqlHospitalLogedInUserToken", null);
             this.$router.push("/");
+        }
+    },
+    computed: {
+        ...mapGetters([
+            'getSelectedPatientFullName'
+        ]),
+        headerTitle() {
+            return (this.$route.meta.title === 'Patient') ?
+                this.getSelectedPatientFullName :
+                this.$route.meta.title;
         }
     }
 };
