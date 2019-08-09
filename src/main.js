@@ -1,6 +1,7 @@
 import Vue                 from 'vue'
 import VueRouter           from 'vue-router';
 import App                 from './App.vue';
+import store               from './modules/vuex/store';
 import { library }         from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas }             from '@fortawesome/free-solid-svg-icons'
@@ -40,6 +41,7 @@ const router = new VueRouter({ routes });
 
 new Vue({
     el: '#app',
+    store,
     router,
     apolloProvider,
     render: h => h(App),
