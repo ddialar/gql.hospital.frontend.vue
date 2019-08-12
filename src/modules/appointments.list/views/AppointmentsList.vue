@@ -10,7 +10,7 @@
                     v-for="patient in patientsList" 
                     :patientId=patient.id
                     :patientName="getFullName(patient.name, patient.surname)"
-                    :patientAge="getAge(patient.birthDate)"
+                    :patientAge="userServices.calculateAge(patient.birthDate)"
                     :socialCareNumber=patient.socialCareNumber
                     :key="`patient-${patient.id}`" />
             </div>
@@ -25,6 +25,8 @@
 <script>
 import DataCard from '../components/DataCard.vue';
 import * as gql from "../graphql";
+
+import { userServices } from 'services';
 
 export default {
     data: () => ({
@@ -48,9 +50,6 @@ export default {
     methods: {
         getFullName(name, surname) {
             return `${name} ${surname}`;
-        },
-        getAge(birthDate) {
-            return (new Date()).getFullYear() - (new Date(birthDate)).getFullYear();
         }
     },
     async mounted() {

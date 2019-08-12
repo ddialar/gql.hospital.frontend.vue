@@ -11,6 +11,7 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
+                'services': path.resolve(__dirname, 'src/core/services'),
                 'logos': path.resolve(__dirname, 'src/assets/logos')
             }
         }
