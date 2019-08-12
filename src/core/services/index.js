@@ -1,5 +1,8 @@
 import usersServices from './users.services';
 
-export default {
+console.log('>>>>>>>>>>>>>>>>>>>> services index.js...');
+console.log(JSON.stringify(usersServices, null, 4));
+
+export {
     usersServices
 };

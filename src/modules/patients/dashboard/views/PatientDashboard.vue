@@ -21,6 +21,8 @@ import { mapActions } from 'vuex';
 import Section from '../components/Section/views/Section.vue';
 import * as gql from "../graphql";
 
+import { userServices } from 'services';
+
 export default {
     data: () => ({
         patientId: '',
@@ -94,7 +96,7 @@ export default {
                 },
                 {
                     title: 'Birth date',
-                    subtitle: patientData.birthDate
+                    subtitle: `${patientData.birthDate} | ${userServices.calculateAge(patientData.birthDate)} yo.`
                 },
             ];
         },
