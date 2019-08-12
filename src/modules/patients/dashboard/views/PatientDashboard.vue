@@ -7,7 +7,6 @@
         <div class="patient-dashboard-wrapper">
             <dashboard-section 
                 v-for="sectionName in Object.keys(sections)" 
-                :patient=patientId
                 :name=sections[sectionName].name
                 :icon=sections[sectionName].icon
                 :data=sections[sectionName].data
@@ -19,7 +18,6 @@
 <script>
 import { mapActions } from 'vuex';
 
-// import Header from '../components/Header.vue';
 import Section from '../components/Section/views/Section.vue';
 import * as gql from "../graphql";
 
@@ -30,6 +28,11 @@ export default {
         patientAge: '',
         socialCareNumber: '',
         sections: {
+            patientData: {
+                name: 'Patient data',
+                icon: 'address-card',
+                data: []
+            },
             reports: {
                 name: 'Reports',
                 icon: 'file',
@@ -54,12 +57,7 @@ export default {
                 name: 'Appointments',
                 icon: 'calendar',
                 data: []
-            },
-            alerts: {
-                name: 'Alerts',
-                icon: 'exclamation-triangle',
-                data: []
-            },
+            }
         }
             
     }),
@@ -67,7 +65,6 @@ export default {
         'patientId'
     ],
     components: {
-        // dashboardHeader: Header,
         dashboardSection: Section
     },
     methods: {
@@ -79,9 +76,35 @@ export default {
             this.patientName = `${patientData.name} ${patientData.surname}`;
             this.patientAge = (new Date()).getFullYear() - (new Date(patientData.birthDate)).getFullYear();
             this.socialCareNumber = patientData.socialCareNumber;
-            this.sections.reports.data = patientData.medicalHistory.medicalReports;
+
+            this.sections.patientData.data = this._groupPatientData(patientData);
+            this.sections.reports.data = patientData.medicalHistory.reports.map(this._parseReportData);
 
             this.$store.dispatch('setSelectedPatient', patientData);
+        },
+        _groupPatientData(patientData) {
+            return [
+                {
+                    title: 'Social care number',
+                    subtitle: patientData.socialCareNumber
+                },
+                {
+                    title: 'Genre',
+                    subtitle: patientData.genre
+                },
+                {
+                    title: 'Birth date',
+                    subtitle: patientData.birthDate
+                },
+            ];
+        },
+        _parseReportData(report) {
+            return {
+                title: report.reportType,
+                subtitle: report.department,
+                complement: report.reportDate,
+                linkTo: `/report/${report.id}`
+            }
         }
     },
     async beforeMount() {
@@ -90,7 +113,7 @@ export default {
                 gql.getPatientById(this.$route.params.patientId)
             )).data.patient;
             
-            if (patientData.__typeName !== 'ApiError') {
+            if (patientData.__typename !== 'ApiError') {
                 this.processPatientData(patientData);
             } else {
                 this.$toastr.error(

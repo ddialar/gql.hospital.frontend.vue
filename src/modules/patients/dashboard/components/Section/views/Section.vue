@@ -9,9 +9,10 @@
             <div class="section-content-wrapper" v-if="data.length > 0">
                 <section-content 
                     v-for="(content, index) in data" 
-                    :type=content.reportType
-                    :department=content.department
-                    :date=content.reportDate
+                    :title=content.title
+                    :subtitle=content.subtitle
+                    :complement=content.complement
+                    :linkTo=content.linkTo
                     :key="`patient-report-${content.bindToReport}-${index}`" />
             </div>
             <div class="no-patient-data" v-if="data.length === 0">
@@ -31,7 +32,6 @@ export default {
         sectionContentFilter: ''
     }),
     props: [
-        'patient',
         'name',
         'icon',
         'data'

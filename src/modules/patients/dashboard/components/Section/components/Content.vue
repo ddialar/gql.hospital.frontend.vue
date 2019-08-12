@@ -1,25 +1,33 @@
 <template>
-    <div class="section-content-row">
-        <div class="section-content-row-icon">
-            <font-awesome-icon icon="chevron-right" />
-        </div>
+    <div class="section-content-row" @click="goToContent(linkTo)">
         <div class="section-content-row-values">
             <ul>
-                <li>{{type}}</li>
-                <li>{{department}}</li>
-                <li>{{date}}</li>
+                <li>{{title}}</li>
+                <li>{{subtitle}}</li>
+                <li>{{complement}}</li>
             </ul>
+        </div>
+        <div class="section-content-row-icon" v-if="linkTo">
+            <font-awesome-icon icon="chevron-right" />
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: [
-        'type',
-        'department',
-        'date'
-    ]
+    props: {
+        'title': { type: String, value: '' },
+        'subtitle': { type: String, value: '' },
+        'complement': { type: String, value: '' },
+        'linkTo': { type: String, value: '' }
+    },
+    methods: {
+        goToContent(navigateTo) {
+            if (navigateTo) {
+                this.$router.push(navigateTo);
+            }
+        }
+    }
 }
 </script>
 
