@@ -1,7 +1,7 @@
 <template>
     <div class="patient-section-header">
         <div class="section-title"><span><font-awesome-icon :icon=icon /></span> {{name}}</div>
-        <div class="search-field" v-if="showSearch">
+        <div class="secton-search" v-if="showSearch">
             <input 
                 type="text" 
                 :value="value" 
@@ -37,19 +37,22 @@ export default {
             font-size: .9em;
         }
     }
-    .search-field {
+    .secton-search {
         width: 40%;
         input:focus {
             outline: none;
         }
         input[type="text"] {
             width: 85%;
-            margin-right: 10px;
+            margin-right: 3%;
             padding: 0 5px;
             box-sizing: border-box;
             font-size: .8em;
             border: none;
             border-bottom: 1px solid $tertiary-color;
+        }
+        .fa-search {
+            width: 12%;
         }
     }
 }
