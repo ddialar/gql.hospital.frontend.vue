@@ -26,7 +26,6 @@ export default {
     ],
     methods: {
         showPatientData(patientId) {
-            // this.$router.push(`/patient/${patientId}`);
             this.$router.push(`/patient/${patientId}`);
         }
     }
