@@ -5,7 +5,7 @@ import AppointmentsList from './modules/appointments.list/views/AppointmentsList
 import HospitalizedList from './modules/hospitalized.list/views/HospitalizedList.vue';
 import PatientDashboard from './modules/patients/dashboard/views/PatientDashboard.vue';
 
-export const routes = [
+const routes = [
     {
         path: '',
         component: Login
@@ -43,3 +43,5 @@ export const routes = [
         ]
     }
 ];
+
+export default routes;
