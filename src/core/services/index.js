@@ -1,8 +1,23 @@
-import usersServices from './users.services';
+import User from './user.services';
 
-console.log('>>>>>>>>>>>>>>>>>>>> services index.js...');
-console.log(JSON.stringify(usersServices, null, 4));
+// ###############################################################
+// ##########            AVAILABLE SERVICES             ##########
+// ###############################################################
 
-export {
-    usersServices
+const services = {
+    User
 };
+
+// ###############################################################
+// ##########            PLUGIN DEFINITION              ##########
+// ###############################################################
+
+var ServicesPlugin = {};
+
+ServicesPlugin.install = Vue => {
+    Vue.prototype.$services = services;
+}
+
+// ###############################################################
+
+export default ServicesPlugin;

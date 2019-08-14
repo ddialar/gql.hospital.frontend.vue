@@ -1,5 +1,5 @@
-import Vue                 from 'vue'
-import VueRouter           from 'vue-router';
+import Vue                    from 'vue'
+import VueRouter              from 'vue-router';
 import App                 from './App.vue';
 import store               from './modules/vuex/store';
 import { library }         from '@fortawesome/fontawesome-svg-core'
@@ -16,13 +16,16 @@ import { fas }             from '@fortawesome/free-solid-svg-icons'
 //     faFolderOpen
 //  } from '@fortawesome/free-regular-svg-icons'
 
-import toastr             from './core/utils/toastr';
+import toastr              from './core/utils/toastr';
 
-import { routes }         from './routes';
+import ServicesPlugin      from './core/services';
 
-import { apolloProvider } from './graphql';
+import routes              from './routes';
+
+import apolloProvider      from './graphql/apollo';
 
 Vue.use(VueRouter);
+Vue.use(ServicesPlugin);
 Vue.prototype.$toastr = toastr;
 
 library.add(fas);

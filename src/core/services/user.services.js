@@ -1,9 +1,9 @@
-const calculateAge = (birthDate) => {
+const calculateAge = birthDate => {
     return (new Date()).getFullYear() - (new Date(birthDate)).getFullYear()
 };
 
-const userServices = {
+const User = {
     calculateAge
-}
+};
 
-export default userServices;
+export default User;
