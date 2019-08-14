@@ -26,7 +26,6 @@
 import DataCard from '../components/DataCard.vue';
 import * as gql from "../graphql";
 
-import userServices from '../../../core/services';
 // import * as CustomServices from 'services';
 
 // console.log(JSON.stringify(CustomServices, null, 4));
@@ -57,7 +56,7 @@ export default {
         },
         getAge(birthDate) {
             // return (new Date()).getFullYear() - (new Date(birthDate)).getFullYear();
-            return userServices.calculateAge(birthDate);
+            return this.$services.User.calculateAge(birthDate);
         }
     },
     async mounted() {
