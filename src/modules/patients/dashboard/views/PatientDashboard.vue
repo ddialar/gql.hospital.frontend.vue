@@ -1,9 +1,5 @@
 <template>
     <div class="patient-dashboard-container">
-        <!-- <dashboard-header 
-            :name=patientName 
-            :age=patientAge
-            :socialCareNumber=socialCareNumber /> -->
         <div class="patient-dashboard-wrapper">
             <dashboard-section 
                 v-for="sectionName in Object.keys(sections)" 
@@ -146,19 +142,6 @@ export default {
     display: flex;
     flex-direction: column;
     background-color: $main-background;
-    .patient-data-header {
-        margin-bottom: 20px;
-        div {
-            color: $tertiary-font-color;
-        }
-        div:nth-child(2) {
-            font-size: 1.2em;
-        }
-        div:first-child {
-            font-size: 1.4em;
-            color: $secondary-font-color;
-        }
-    }
     .patient-dashboard-wrapper {
         position: relative;
         width: 100%;
@@ -168,29 +151,7 @@ export default {
         flex-wrap: wrap;
         justify-content: space-between;
         align-content: flex-start;
-        // div {
-        //     margin-right: 1%;
-        //     margin-bottom: 1%;
-        // }
-        // div:nth-child(3n) {
-        //     margin-right: 0;
-        // }
     }
-    // .search-patient {
-    //     width: 40%;
-    //     margin-bottom: 10px;
-    //     padding: 10px;
-    //     input:focus {
-    //         outline: none;
-    //     }
-    //     input[type="text"] {
-    //         width: 85%;
-    //         margin-right: 10px;
-    //         font-size: 1em;
-    //         border: none;
-    //         border-bottom: 1px solid $tertiary-color;
-    //     }
-    // }
 }
 </style>
 

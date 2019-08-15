@@ -4,6 +4,7 @@ import Main from './modules/main/views/Main.vue';
 import AppointmentsList from './modules/appointments.list/views/AppointmentsList.vue';
 import HospitalizedList from './modules/hospitalized.list/views/HospitalizedList.vue';
 import PatientDashboard from './modules/patients/dashboard/views/PatientDashboard.vue';
+import NewPatient       from './modules/patients/new/views/NewPatient.vue';
 
 const routes = [
     {
@@ -37,6 +38,14 @@ const routes = [
                 component: PatientDashboard,
                 meta: {
                     title: 'Patient'
+                },
+                props: true
+            },
+            {
+                path: '/new_patient',
+                component: NewPatient,
+                meta: {
+                    title: 'New patient'
                 },
                 props: true
             }
