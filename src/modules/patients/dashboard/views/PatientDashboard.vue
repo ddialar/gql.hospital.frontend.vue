@@ -99,6 +99,9 @@ export default {
             ];
         },
         _parseReportData(report) {
+            // TODO: Include a new field which shows the last visit for the doctor who is authenticated.
+            //  This field can be named lastComeOn.
+            //  It can be calculated serching in the reports, what was the last created for the authenticated doctor for this patient.
             return {
                 title: report.reportType,
                 subtitle: report.department,
