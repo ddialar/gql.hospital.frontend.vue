@@ -7,13 +7,19 @@ $tertiary-color-soft: #f1f1f1;
 $main-background: white;
 $secondary-background: $tertiary-color;
 $header-background: $main-background;
-$menu-background: #272c33;
-$card-background: $menu-background;
-$form-field-background: $menu-background;
 $error-background: #fc4b6c;
 $warning-background: #ffb22b;
 $apply-background: #28a745;
 $cancel-background: $error-background;
+
+$menu-background: #004d6d;
+$menu-text: white;
+$menu-activated-background: #005F89;
+$menu-activated-text: $primary-color;
+
+$card-background: $menu-background;
+
+$form-field-background: $menu-background;
 
 $licence-bound-color: $primary-color;
 $licence-active-color: $apply-background;

@@ -67,7 +67,8 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background: $header-background;
+    // background: $header-background;
+    background-color: pink;
     padding: 20px;
     box-sizing: border-box;
     .hamburger-menu-container {

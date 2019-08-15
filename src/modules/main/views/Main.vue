@@ -1,21 +1,21 @@
 <template>
     <div class="main-container">
-        <custom-header></custom-header>
-        <section class="main-wrapper">
-            <article class="main-content">
-                <router-view></router-view>
-            </article>
-        </section>
+        <nav-bar />
+        <main-section />
     </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue';
+// import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import Section from '../components/Section';
 
 export default {
     data: () => ({}),
     components: {
-        customHeader: Header
+        // customHeader: Header
+        navBar: NavBar,
+        mainSection: Section
     }
 };
 </script>
@@ -28,15 +28,8 @@ export default {
     top: 0;
     left: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: $main-background;
-    .main-wrapper {
-        position: relative;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
 }
 </style>
 
