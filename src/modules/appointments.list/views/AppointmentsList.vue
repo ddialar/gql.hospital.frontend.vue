@@ -1,9 +1,13 @@
 <template>
     <div class="appointments-container">
-        <div class="search-patient" v-if="appointments.length !== 0">
+        <section-header 
+            search 
+            searchPlaceholder="Patient name"
+            v-model="filterValue" />
+        <!-- <div class="search-patient" v-if="appointments.length !== 0">
             <input type="text" placeholder="Patient name" v-model="patientFilter">
             <font-awesome-icon class="search-icon" icon="search" />
-        </div>
+        </div> -->
         <div class="appointments-wrapper">
             <div class="appointments-list" v-if="appointments.length !== 0">
                 <data-card 
@@ -23,8 +27,9 @@
 </template>
 
 <script>
-import DataCard from '../components/DataCard.vue';
-import * as gql from "../graphql";
+import SectionHeader from '../../common/components/SectionHeader';
+import DataCard      from '../components/DataCard.vue';
+import * as gql      from "../graphql";
 
 // import * as CustomServices from 'services';
 
@@ -34,15 +39,16 @@ import * as gql from "../graphql";
 export default {
     data: () => ({
         appointments: [],
-        patientFilter: ''
+        filterValue: ''
     }),
     components: {
+        sectionHeader: SectionHeader,
         dataCard: DataCard
     },
     computed: {
         // REFACTOR: This process could be handled by a core service.
         patientsList() {
-            let filter = this.patientFilter.trim().replace(/\s/g, '').toLowerCase();
+            let filter = this.filterValue.trim().replace(/\s/g, '').toLowerCase();
             return this.appointments.filter(appointment => {
                 return appointment.name.toLowerCase().indexOf(filter) >= 0 ||
                        appointment.surname.toLowerCase().indexOf(filter) >= 0 ||
@@ -81,7 +87,7 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    padding: 0 10px;
+    padding: 0 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -114,7 +120,7 @@ export default {
         .appointments-list{
             position: relative;
             width: 100%;
-            padding: 10px;
+            padding: 10px 0;
             box-sizing: border-box;
             display: flex;
             justify-content: flex-start;
