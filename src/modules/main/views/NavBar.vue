@@ -66,18 +66,10 @@ export default {
         text-align: center;
     }
     li:first-child {
-        margin-top: 13px
+        margin-top: 5px
     }
     li.selected {
-        // border-right: 5px solid $menu-activated-background;
-        // color: $menu-activated-text;
         background-color: $menu-activated-background;
-        // div:first-child {
-        //     color: $primary-color;
-        // }
-        // div:last-child {
-        //     color: $tertiary-color-soft;
-        // }
     }
     .side-menu-header, 
     .menu-option {
