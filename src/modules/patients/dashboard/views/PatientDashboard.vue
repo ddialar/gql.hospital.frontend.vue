@@ -1,5 +1,6 @@
 <template>
     <div class="patient-dashboard-container">
+        <section-header :title="patientName"></section-header>
         <div class="patient-dashboard-wrapper">
             <dashboard-section 
                 v-for="sectionName in Object.keys(sections)" 
@@ -14,7 +15,9 @@
 <script>
 import { mapActions } from 'vuex';
 
+import SectionHeader from '../../../common/components/SectionHeader';
 import Section from '../components/Section/views/Section.vue';
+
 import * as gql from "../graphql";
 
 export default {
@@ -61,6 +64,7 @@ export default {
         'patientId'
     ],
     components: {
+        sectionHeader: SectionHeader,
         dashboardSection: Section
     },
     methods: {
@@ -146,6 +150,8 @@ export default {
         position: relative;
         width: 100%;
         height: 100%;
+        padding: 10px 0;
+        box-sizing: border-box;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
