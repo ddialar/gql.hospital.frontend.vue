@@ -1,5 +1,6 @@
 <template>
     <header>
+        <span class="header-title" v-if="title">{{title}}</span>
         <div class="search-bar" v-if="search">
             <input 
                 type="text" 
@@ -17,10 +18,10 @@ export default {
         filterContent: ''
     }),
     props: {
+        title: { type: String, default: '' },
         search: { type: Boolean, default: false },
         searchPlaceholder: { type: String, default: 'Search' }
-    },
-    components: {}
+    }
 };
 </script>
 
@@ -33,6 +34,9 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    .header-title {
+        font-size: 1.7em;
+    }
     .search-bar {
         width: 50%;
         height: 25px;
